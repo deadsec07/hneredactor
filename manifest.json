@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "HNE Redactor Pro",
+  "description": "Select area • annotate • blur/pixelate • full-page • copy/save/print • optional quick-share.",
+  "version": "2.0.2",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel",
+    "clipboardWrite",
+    "downloads",
+    "contextMenus"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "optional_host_permissions": [
+    "https://api.imgur.com/*",
+    "https://*.amazonaws.com/*"
+  ],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": { "default_title": "Open HNE Redactor Pro" },
+  "options_page": "options.html",
+  "commands": {
+    "toggle-side-panel": {
+      "suggested_key": { "default": "Ctrl+Shift+R", "mac": "Command+Shift+R" },
+      "description": "Open the redaction side panel"
+    }
+  },
+  "web_accessible_resources": [{
+    "resources": ["contentSelect.js"],
+    "matches": ["<all_urls>"]
+  }],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

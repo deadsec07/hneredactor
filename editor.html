@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HNE Redactor Pro — Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --bg:#0b1118; --fg:#e6f6ff; --accent:#66ccff; --muted:#8fb3c9; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,Arial;background:var(--bg);color:var(--fg)}
+    header{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #12212e;position:sticky;top:0;background:var(--bg);z-index:5}
+    button,.btn{border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:10px;padding:6px 10px;cursor:pointer;font-size:13px}
+    button:hover{background:#10202c}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .grow{flex:1}
+    #wrap{padding:10px}
+    #stage{display:grid;gap:8px}
+    canvas{background:#0f1620;border:1px solid #143247;border-radius:12px;max-width:100%}
+    .tools{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;border-top:1px solid #12212e}
+    label{font-size:12px;color:var(--muted)}
+    input[type=range]{width:120px}
+    .pill{border:1px solid #1b3446;padding:6px 8px;border-radius:10px;background:#0f1b25}
+    .hint{color:#9ab;font-size:12px;padding:6px 12px 8px}
+    .tools-hint{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;line-height:1.6}
+    .tools-hint .k{padding:2px 6px;border:1px solid #26485e;border-radius:6px;color:#9bd;margin:0}
+    select,input[type=color],input[type=number],input[type=text]{background:#0f1b25;color:#e6f6ff;border:1px solid #1b3446;border-radius:10px;padding:6px 8px}
+    .toolbtn{min-width:32px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <button id="selectAreaBtn">Select area</button>
+      <button id="captureBtn">Visible</button>
+      <button id="fullPageBtn">Full page</button>
+    </div>
+    <span class="grow"></span>
+    <div class="row">
+      <button id="fullscreenBtn">Fullscreen</button>
+      <button id="uploadBtn" title="Quick share (Imgur/S3)">Upload</button>
+      <button id="copyBtn">Copy</button>
+      <button id="downloadBtn">Save</button>
+      <button id="printBtn">Print</button>
+      <button id="newTabBtn">Open</button>
+    </div>
+  </header>
+
+  <div class="hint tools-hint">
+    <span>Tools:</span>
+    <span class="k">R</span><span>Rect</span>
+    <span class="k">A</span><span>Arrow</span>
+    <span class="k">E</span><span>Ellipse</span>
+    <span class="k">L</span><span>Line</span>
+    <span class="k">P</span><span>Pen</span>
+    <span class="k">T</span><span>Text</span>
+    <span class="k">B</span><span>Blur</span>
+    <span class="k">X</span><span>Pixelate</span>
+    <span>•</span>
+    <span class="k">Ctrl/Cmd+Z</span><span>Undo</span>
+    <span class="k">Ctrl/Cmd+Y</span><span>Redo</span>
+  </div>
+
+  <div id="wrap"><div id="stage"><canvas id="c" width="10" height="10"></canvas></div></div>
+
+  <div class="tools">
+    <select id="tool">
+      <option value="rect">Rectangle (R)</option>
+      <option value="arrow">Arrow (A)</option>
+      <option value="ellipse">Ellipse (E)</option>
+      <option value="line">Line (L)</option>
+      <option value="pen">Pen (P)</option>
+      <option value="text">Text (T)</option>
+      <option value="blur">Blur (B)</option>
+      <option value="pixel">Pixelate (X)</option>
+    </select>
+    <label>Color <input id="color" type="color" value="#66ccff"></label>
+    <label>Size <input id="size" type="range" min="1" max="24" value="4"><span id="sizeVal" class="pill">4</span></label>
+    <label>Blur(px) <input id="blurRange" type="range" min="2" max="30" value="14"><span id="blurVal" class="pill">14px</span></label>
+    <label>Pixel <input id="pixelRange" type="range" min="3" max="30" value="8"><span id="pixelVal" class="pill">8</span></label>
+    <label><input id="gridChk" type="checkbox"> Grid</label>
+    <label><input id="snapChk" type="checkbox" checked> Snap 10px</label>
+    <button class="toolbtn" id="undoBtn">↶</button>
+    <button class="toolbtn" id="redoBtn">↷</button>
+    <button class="toolbtn" id="clearBtn">Clear</button>
+  </div>
+
+  <script src="editor.js" defer></script>
+  <script src="sidepanel.js" defer></script>
+</body>
+</html>
