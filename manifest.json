@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "HNE Redactor Pro",
-  "description": "Select area • annotate • blur/pixelate • full-page • copy/save/print • optional quick-share.",
-  "version": "2.0.2",
+  "name": "Screenshot Capture & Redactor — HNE",
+  "description": "Screenshot capture (select area / visible / full-page), annotate, blur & pixelate, undo/redo, zoom, and export (copy, save, print). Side panel + pop-out editor.",
+  "version": "2.0.3",
   "minimum_chrome_version": "116",
   "permissions": [
     "tabs",
@@ -11,7 +11,6 @@
     "storage",
     "sidePanel",
     "clipboardWrite",
-    "downloads",
     "contextMenus"
   ],
   "host_permissions": ["<all_urls>"],

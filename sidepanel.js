@@ -532,7 +532,7 @@ async function broadcastClearState() {
     const fmt = confirm('OK = PNG, Cancel = JPG') ? 'image/png' : 'image/jpeg';
     const blob = await renderFinal(fmt);
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href=url; a.download=`redacted.${fmt==='image/png'?'png':'jpg'}`; a.click();
+    const a = document.createElement('a'); a.href=url; a.download=`hneredactor.${fmt==='image/png'?'png':'jpg'}`; a.click();
     setTimeout(()=>URL.revokeObjectURL(url),2000);
   }
   async function copyImage(){
